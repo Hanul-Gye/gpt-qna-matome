@@ -13,8 +13,6 @@ app = Flask(__name__)
 load_dotenv()
 
 # API 키 설정
-# openai.api_key = os.getenv("OPENAI_API_KEY")
-
 client = OpenAI(
     timeout=20.0,
     api_key=os.environ.get("OPENAI_API_KEY"),
