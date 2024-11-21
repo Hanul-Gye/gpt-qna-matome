@@ -79,7 +79,7 @@ def process_summary(channel_id, messages, thread_ts):
                     )
                 }
             ]
-)
+        )
 
 
         summary = response.choices[0].message.content
