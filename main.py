@@ -59,10 +59,28 @@ def process_summary(channel_id, messages, thread_ts):
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": f"Summarize this Slack thread in Japanese:\n{messages}"}
+                {
+                    "role": "system",
+                    "content": (
+                        "You are an assistant designed to facilitate communication between our company's "
+                        "Customer Success team and Development team. Your role is to analyze incoming inquiries "
+                        "and summarize them in Japanese in a bullet point format. Ensure all key details are present, "
+                        "and if any details are missing, suggest follow-up questions to the inquirer."
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": (
+                        "Summarize this Slack thread in Japanese in a bullet point format. Ensure the following details are included:\n"
+                        "- Which client or corporation is the inquiry related to? Or is it an internal inquiry?\n"
+                        "- Which feature or function experienced an issue?\n"
+                        "- Was a file (e.g., CSV) used, and was it attached? If not, request the user to attach it.\n\n"
+                        "Slack thread:\n{messages}"
+                    )
+                }
             ]
-        )
+)
+
 
         summary = response.choices[0].message.content
     except Exception as e:
