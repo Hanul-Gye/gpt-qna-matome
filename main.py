@@ -75,7 +75,7 @@ def process_summary(channel_id, messages, thread_ts):
                         "- Which client or corporation is the inquiry related to? Or is it an internal inquiry?\n"
                         "- Which feature or function experienced an issue?\n"
                         "- Was a file (e.g., CSV) used, and was it attached? If not, request the user to attach it.\n\n"
-                        "Slack thread:\n{messages}"
+                        f"Slack thread:\n{messages}"
                     )
                 }
             ]
